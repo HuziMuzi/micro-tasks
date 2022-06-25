@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {MicroMap} from "./MicroMap";
+import {MicroMap} from "./components/MicroMap/MicroMap";
+import MicroUseState from "./components/useState/MicroUseState";
+import Filter from "./components/Filter/Filter";
 
 
 const topCars = [
@@ -10,11 +12,17 @@ const topCars = [
   {manufacturer:'Audi', model:'rs6'}
 ]
 
-
 function App() {
+
+
+
+
   return (
     <div className="App">
-      <MicroMap title={"My Cars"} topCars={topCars}/>
+      <Filter/>
+      {/*<MicroMap title={"My Cars"} topCars={topCars}/>*/}
+      {/*<MicroUseState/>*/}
+
     </div>
   );
 }
