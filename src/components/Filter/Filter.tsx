@@ -1,38 +1,26 @@
 import React, {useState} from 'react';
-
-const Filter = () => {
-
-    const [money, setMoney] = useState([
-        {banknots: 'Dollars', value: 100, number: ' a1234567890'},
-        {banknots: 'Dollars', value: 50, number: ' z1234567890'},
-        {banknots: 'RUBLS', value: 100, number: ' w1234567890'},
-        {banknots: 'Dollars', value: 100, number: ' e1234567890'},
-        {banknots: 'Dollars', value: 50, number: ' c1234567890'},
-        {banknots: 'RUBLS', value: 100, number: ' r1234567890'},
-        {banknots: 'Dollars', value: 50, number: ' x1234567890'},
-        {banknots: 'RUBLS', value: 50, number: ' v1234567890'},
-    ])
-
-    const [statusButton, setStatusButton] = useState<string>('all')
-
-    let currentMoney = money
-    if (statusButton === 'RUBLS') {
-        currentMoney = money.filter((filteredMoney) => filteredMoney.banknots === 'RUBLS')
-    }
-    if (statusButton === 'Dollars') {
-        currentMoney = money.filter((filteredMoney) => filteredMoney.banknots === 'Dollars')
-    }
+import {nameButtonType} from "../../App";
+import Button from "./Button";
 
 
-    const onclickFilterHandler = (nameButton: string) => {
-        setStatusButton(nameButton)
-        console.log(statusButton)
-    }
+type CurrentMoney = {
+    banknots: string
+    value: number
+    number: string
+}
 
+
+type FilterPropsType = {
+    currentMoney: Array<CurrentMoney>
+    filterHandler: (name: nameButtonType) => void
+}
+
+
+const Filter = (props: FilterPropsType) => {
     return (
         <div>
             <ul>
-                {currentMoney.map((bank, index) => {
+                {props.currentMoney.map((bank, index) => {
                     return (
                         <li key={index}>
                             <span> {bank.banknots}</span>
@@ -43,9 +31,13 @@ const Filter = () => {
                 })}
             </ul>
             <div style={{marginLeft: '35px'}}>
-                <button onClick={() => onclickFilterHandler('all')}>all</button>
-                <button onClick={() => onclickFilterHandler('RUBLS')}>ruble</button>
-                <button onClick={() => onclickFilterHandler('Dollars')}>dollar</button>
+                <Button callBack={() => props.filterHandler('all')} name={'all'}/>
+                <Button callBack={() => props.filterHandler('RUBLS')} name={'ruble'}/>
+                <Button callBack={() => props.filterHandler('Dollars')} name={'dollar'}/>
+
+                {/*<button onClick={() => props.filterHandler('all')}>all</button>*/}
+                {/*<button onClick={() => props.filterHandler('RUBLS')}>ruble</button>*/}
+                {/*<button onClick={() => props.filterHandler('Dollars')}>dollar</button>*/}
             </div>
         </div>
     );
