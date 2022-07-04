@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {nameButtonType} from "../../App";
+// import {nameButtonType} from "../../App";
 import Button from "./Button";
 
 
@@ -12,7 +12,7 @@ type CurrentMoney = {
 
 type FilterPropsType = {
     currentMoney: Array<CurrentMoney>
-    filterHandler: (name: nameButtonType) => void
+    // filterHandler: (name: nameButtonType) => void
 }
 
 
@@ -31,9 +31,9 @@ const Filter = (props: FilterPropsType) => {
                 })}
             </ul>
             <div style={{marginLeft: '35px'}}>
-                <Button callBack={() => props.filterHandler('all')} name={'all'}/>
-                <Button callBack={() => props.filterHandler('RUBLS')} name={'ruble'}/>
-                <Button callBack={() => props.filterHandler('Dollars')} name={'dollar'}/>
+                {/*<Button callBack={() => props.filterHandler('all')} name={'all'}/>*/}
+                {/*<Button callBack={() => props.filterHandler('RUBLS')} name={'ruble'}/>*/}
+                {/*<Button callBack={() => props.filterHandler('Dollars')} name={'dollar'}/>*/}
 
                 {/*<button onClick={() => props.filterHandler('all')}>all</button>*/}
                 {/*<button onClick={() => props.filterHandler('RUBLS')}>ruble</button>*/}
