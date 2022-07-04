@@ -4,7 +4,6 @@ type FullInputPropsType = {
     addMessage: (title: string) => void
 }
 
-
 export const FullInput = (props: FullInputPropsType) => {
     let [title, setTitle] = useState('')
 

@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import {FullInput} from "./FullInput";
+import {Button} from "./Button";
+import {OnlyInput} from "./OnlyInput";
 
 export const Input = () => {
     let [message, setMessage] = useState([
@@ -8,14 +10,27 @@ export const Input = () => {
         {message: 'message2'}
     ])
 
+    let [title, setTitle] = useState('')
+
+
+
     const addMessage = (title: string) => {
         let newMessage = {message: title}
         setMessage([newMessage, ...message])
     }
 
+    const callBackButtonHandler = () => {
+        addMessage(title)
+        setTitle('')
+    }
+
     return (
         <div>
-            <FullInput addMessage={addMessage}/>
+            <OnlyInput title={title} setTitle={setTitle}/>
+            <Button name={'+'} callBack={callBackButtonHandler} />
+
+
+            {/*<FullInput addMessage={addMessage}/>*/}
             {message.map(el => {
                 return (
                     <div>{el.message}</div>
